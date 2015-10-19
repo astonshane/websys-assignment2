@@ -11,6 +11,16 @@ function hexFromRGB(r, g, b) {
     });
     return hex.join( "" ).toUpperCase();
   }
+  //http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+  function hexToRgb(hex) {
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+
+    return [r,g,b];
+}
+
   function refreshSwatch() {
     var red = $( "#red" ).slider( "value" ),
       green = $( "#green" ).slider( "value" ),
@@ -40,7 +50,7 @@ function hexFromRGB(r, g, b) {
     var red = getRandomInt(0,256);
     var green = getRandomInt(0,256);
     var blue = getRandomInt(0,256);
-    
+
     console.log(red);
     console.log(green);
     console.log(blue);
