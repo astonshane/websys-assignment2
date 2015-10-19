@@ -37,9 +37,9 @@ function hexFromRGB(r, g, b) {
       slide: refreshSwatch,
       change: refreshSwatch
     });
-    $( "#red" ).slider( "value", 255 );
-    $( "#green" ).slider( "value", 140 );
-    $( "#blue" ).slider( "value", 60 );
+    $( "#red" ).slider( "value", 21 );
+    $( "#green" ).slider( "value", 207 );
+    $( "#blue" ).slider( "value", 253 );
   });
 
   function getRandomInt(min, max) {
