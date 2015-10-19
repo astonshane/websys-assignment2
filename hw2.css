@@ -7,7 +7,6 @@
   #swatch, #randomSwatch {
     width: 120px;
     height: 120px;
-    margin-top: 18px;
     margin-left: 350px;
     background-image: none;
     -moz-border-radius: 60px;
@@ -27,6 +26,12 @@
     margin-left: 20px;
     border-color: black;
     border-width: 2px;
+  }
+
+  p.label {
+    padding-left: 20px;
+    padding-top: 20px;
+    font-weight: bold;
   }
 
   #red .ui-slider-range { background: #ef2929; }
