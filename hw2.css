@@ -45,6 +45,14 @@ p, h1 {
   #blue .ui-slider-range { background: #729fcf; }
   #blue .ui-slider-handle { border-color: #729fcf; }
 
+  #redBox, #greenBox, #blueBox {
+    float: left;
+    margin-left: 10px;
+    margin-top: 12px;
+    width: 30px;
+  }
+
+
   h1 {
     font-family: 'Shadows Into Light', cursive;
   }

@@ -45,7 +45,11 @@ function hexFromRGB(r, g, b) {
 
     $("#redBox").change(function() {
       $( "#red" ).slider( "value", $("#redBox").val() );
+    })
+    $("#blueBox").change(function() {
       $( "#blue" ).slider( "value", $("#blueBox").val() );
+    })
+    $("#greenBox").change(function() {
       $( "#green" ).slider( "value", $("#greenBox").val() );
     })
     $( "#redBox, #greenBox, #blueBox" ).slider({
@@ -57,13 +61,14 @@ function hexFromRGB(r, g, b) {
       change: refreshSwatch
     });
 
-    $( "#red" ).slider( "value", 255 );
-    $( "#green" ).slider( "value", 140 );
-    $( "#blue" ).slider( "value", 60 );
+    $( "#red" ).slider( "value", 21 );
+    $( "#green" ).slider( "value", 207 );
+    $( "#blue" ).slider( "value", 253 );
 
     $( "#redBox" ).val($( "#red" ).slider( "value" ));
     $( "#greenBox" ).val($( "#green" ).slider( "value" ));
     $( "#blueBox" ).val($( "#green" ).slider( "value" ));
+
   });
 
   function getRandomInt(min, max) {
