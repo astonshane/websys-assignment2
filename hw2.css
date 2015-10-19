@@ -14,8 +14,18 @@
     -webkit-border-radius: 60px;
     border-radius: 60px;
     border: black, 2px;
-
   }
+
+  #randomSwatch {
+    float: left;
+    margin-left: 20px;
+  }
+
+  #swatch {
+    float: left;
+    margin-left: 20px;
+  }
+
   #red .ui-slider-range { background: #ef2929; }
   #red .ui-slider-handle { border-color: #ef2929; }
   #green .ui-slider-range { background: #8ae234; }
