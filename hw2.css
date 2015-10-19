@@ -1,3 +1,7 @@
+p, h1 {
+  margin-left: 15px;
+}
+
 #red, #green, #blue {
     float: left;
     clear: left;
@@ -16,14 +20,14 @@
 
   #randomSwatch {
     float: left;
-    margin-left: 20px;
+    margin-left: 32px;
     border-color: black;
     border-width: 2px;
   }
 
   #swatch {
     float: left;
-    margin-left: 20px;
+    margin-left: 32px;
     border-color: black;
     border-width: 2px;
   }
