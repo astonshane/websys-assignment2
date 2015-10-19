@@ -2,31 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>jQuery UI Slider - Colorpicker</title>
+  <title>Get Hexed!</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <style>
-  #red, #green, #blue {
-    float: left;
-    clear: left;
-    width: 300px;
-    margin: 15px;
-  }
-  #swatch, #randomSwatch {
-    width: 120px;
-    height: 100px;
-    margin-top: 18px;
-    margin-left: 350px;
-    background-image: none;
-  }
-  #red .ui-slider-range { background: #ef2929; }
-  #red .ui-slider-handle { border-color: #ef2929; }
-  #green .ui-slider-range { background: #8ae234; }
-  #green .ui-slider-handle { border-color: #8ae234; }
-  #blue .ui-slider-range { background: #729fcf; }
-  #blue .ui-slider-handle { border-color: #729fcf; }
-  </style>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link href="hw2.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="hw2.js"></script>
   <script>
   function hexFromRGB(r, g, b) {
     var hex = [
@@ -82,6 +66,11 @@
   </script>
 </head>
 <body class="ui-widget-content" style="border:0;">
+  <h1>Get Hexed!</h1>
+  <p> Your goal is to guess the RGB values of the swatch on the left using the sliders and the swatch on the right.</p>
+  <p>Use the sliders or the input boxes to adjust the RGB values of the swatch on the right.</p>
+  <p>Press the 'Got it!' button when you think you have the correct answer.</p>
+  <p>You have a maximum of '10' turns.</p>
 
 <div id="randomSwatch" class="ui-widget-content ui-corner-all"></div>
 
