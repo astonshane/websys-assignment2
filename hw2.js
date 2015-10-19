@@ -46,6 +46,16 @@ function hexFromRGB(r, g, b) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
+   function scoring (act_r, act_g, act_b, exp_r, exp_g, exp_b) {
+    r_off = (Math.abs(exp_r - act_r)/255)*100
+    g_off = (Math.abs(exp_g - act_g)/255)*100
+    b_off = (Math.abs(exp_b - act_b)/255)*100
+    p_off = (r_off + g_off + b_off)/3
+    ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - ms_taken)
+    return ans;
+  }
+
+
   $( document ).ready(function() {
     var red = getRandomInt(0,256);
     var green = getRandomInt(0,256);
