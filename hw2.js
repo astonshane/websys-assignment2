@@ -24,7 +24,12 @@ function hexFromRGB(r, g, b) {
   function refreshSwatch() {
     var red = $( "#red" ).slider( "value" ),
       green = $( "#green" ).slider( "value" ),
-      blue = $( "#blue" ).slider( "value" ),
+      blue = $( "#blue" ).slider( "value" )
+
+      $( "#redBox" ).val(red);
+      $( "#greenBox" ).val(green);
+      $( "#blueBox" ).val(blue);
+
       hex = hexFromRGB( red, green, blue );
     $( "#swatch" ).css( "background-color", "#" + hex );
   }
@@ -37,9 +42,28 @@ function hexFromRGB(r, g, b) {
       slide: refreshSwatch,
       change: refreshSwatch
     });
+
+    $("#redBox").change(function() {
+      $( "#red" ).slider( "value", $("#redBox").val() );
+      $( "#blue" ).slider( "value", $("#blueBox").val() );
+      $( "#green" ).slider( "value", $("#greenBox").val() );
+    })
+    $( "#redBox, #greenBox, #blueBox" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      max: 255,
+      value: 127,
+      slide: refreshSwatch,
+      change: refreshSwatch
+    });
+
     $( "#red" ).slider( "value", 255 );
     $( "#green" ).slider( "value", 140 );
     $( "#blue" ).slider( "value", 60 );
+
+    $( "#redBox" ).val($( "#red" ).slider( "value" ));
+    $( "#greenBox" ).val($( "#green" ).slider( "value" ));
+    $( "#blueBox" ).val($( "#green" ).slider( "value" ));
   });
 
   function getRandomInt(min, max) {
@@ -68,22 +92,4 @@ function hexFromRGB(r, g, b) {
     hex = hexFromRGB( red, green, blue );
     $( "#randomSwatch" ).css( "background-color", "#" + hex );
 
-  });
-
-
-
-  $(function() {
-    var select = $( "#minbeds" );
-    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
-      min: 1,
-      max: 6,
-      range: "min",
-      value: select[ 0 ].selectedIndex + 1,
-      slide: function( event, ui ) {
-        select[ 0 ].selectedIndex = ui.value - 1;
-      }
-    });
-    $( "#minbeds" ).change(function() {
-      slider.slider( "value", this.selectedIndex + 1 );
-    });
   });
