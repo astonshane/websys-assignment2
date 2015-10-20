@@ -76,11 +76,14 @@ function hexFromRGB(r, g, b) {
   }
 
    function scoring (act_r, act_g, act_b, exp_r, exp_g, exp_b) {
-    r_off = (Math.abs(exp_r - act_r)/255)*100
-    g_off = (Math.abs(exp_g - act_g)/255)*100
-    b_off = (Math.abs(exp_b - act_b)/255)*100
-    p_off = (r_off + g_off + b_off)/3
-    ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - ms_taken)
+    var r_off = (Math.abs(exp_r - act_r)/255)*100
+    var g_off = (Math.abs(exp_g - act_g)/255)*100
+    var b_off = (Math.abs(exp_b - act_b)/255)*100
+    var p_off = (r_off + g_off + b_off)/3
+    var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - ms_taken)
+
+    document.write(ans);
+
     return ans;
   }
 
@@ -98,3 +101,7 @@ function hexFromRGB(r, g, b) {
     $( "#randomSwatch" ).css( "background-color", "#" + hex );
 
   });
+
+  function showResults() {
+    document.getElementById('results').style.display = "block";
+  }

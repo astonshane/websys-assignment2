@@ -58,6 +58,12 @@ p, h1 {
     padding-top: 150px;
   }
 
+  #score {
+    clear: left;
+    padding-top: 10px;
+    padding-left: 15px;
+  }
+
   h1 {
     font-family: 'Shadows Into Light', cursive;
   }
