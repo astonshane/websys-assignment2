@@ -50,8 +50,13 @@ p, h1 {
     margin-left: 10px;
     margin-top: 12px;
     width: 30px;
+    height: 20px;
+    font-size: 12px;
   }
 
+  #colors {
+    padding-top: 150px;
+  }
 
   h1 {
     font-family: 'Shadows Into Light', cursive;
