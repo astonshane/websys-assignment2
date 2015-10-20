@@ -2,6 +2,25 @@ p, h1 {
   margin-left: 15px;
 }
 
+#difficulty {
+  margin-left: 15px;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+}
+
+#turns {
+  margin-left: 15px;
+  margin-top: 20px;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+}
+
+#turnsBox {
+  width: 30px;
+  height: 20px;
+  font-size: 12px;
+}
+
 #red, #green, #blue {
     float: left;
     clear: left;
