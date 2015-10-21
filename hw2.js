@@ -90,6 +90,7 @@ function hexFromRGB(r, g, b) {
     ans = 0;
   }
   ans = ans.toFixed(2);
+  //alert(msec_taken);
   return ans;
   }
 
@@ -123,5 +124,25 @@ function hexFromRGB(r, g, b) {
 
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     document.getElementById("yourScore").innerHTML = ans;
+    timerStart = Date.now();
     //alert(ans);
+  }
+
+  function newSwatch() {
+    var prevAns = ans;
+    $("#randomSwatch").load();
+    var red = getRandomInt(0,256);
+    var green = getRandomInt(0,256);
+    var blue = getRandomInt(0,256);
+
+    console.log(red);
+    console.log(green);
+    console.log(blue);
+
+    hex = hexFromRGB( red, green, blue );
+    $( "#randomSwatch" ).css( "background-color", "#" + hex );
+    $("#randomSwatch").load();
+    document.getElementById("lastScore").innerHTML = prevAns;
+    document.getElementById("yourScore").innerHTML = "";
+    timerStart = Date.now();
   }
