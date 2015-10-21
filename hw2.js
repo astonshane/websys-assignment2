@@ -1,4 +1,5 @@
 var timerStart = Date.now();
+var bestAns = 0;
 
 function hexFromRGB(r, g, b) {
     var hex = [
@@ -86,10 +87,18 @@ function hexFromRGB(r, g, b) {
   var difficulty = d.options[d.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
-  if (ans < 0 || msec_taken > 15000 || ((15 - difficulty - p_off) / (15 - difficulty)) < 0) {
+  if (ans < 0) {
+    ans = 0;
+  }
+  else if (ans > 15000) {
     ans = 0;
   }
   ans = ans.toFixed(2);
+  // bestAns = bestAns.toFixed(2);
+  // if (ans > bestAns) {
+  //   bestAns = ans;
+  // }
+  //document.getElementById("bestScore").innerHTML = bestAns;
   //alert(msec_taken);
   return ans;
   }
@@ -111,22 +120,23 @@ function hexFromRGB(r, g, b) {
 
   function showResults() {
     $("#results").show();
-    var colors = $( "#randomSwatch" ).css( "background-color")
-    rgb = colors.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    var colors = $( "#randomSwatch" ).css( "background-color");
+    var rgb = colors.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     //the "real" values
-    red_exp = rgb[1];
-    green_exp = rgb[2];
-    blue_exp = rgb[3];
+    var red_exp = rgb[1];
+    var green_exp = rgb[2];
+    var blue_exp = rgb[3];
 
-    red_act = parseInt($("#redBox").val());
-    green_act = parseInt($("#greenBox").val());
-    blue_act = parseInt($("#redBox").val());
+    var red_act = parseInt($("#redBox").val());
+    var green_act = parseInt($("#greenBox").val());
+    var blue_act = parseInt($("#redBox").val());
 
-    ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
+    var ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     document.getElementById("yourScore").innerHTML = ans;
+
     var turns = document.getElementById("turnsBox").value;
     if (turns < 0) {
-      alert("You must have a positive number of turns.")
+      alert("You must have a positive number of turns.");
     }
     else {
       turns = turns-1;
