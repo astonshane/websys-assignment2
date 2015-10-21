@@ -142,6 +142,7 @@ function hexFromRGB(r, g, b) {
       turns = turns-1;
       if (turns == 0) {
         document.getElementById("scoreButton").style.display = "none";
+        document.getElementById("scoreTitle").innerHTML = "Final Score"
       }
       document.getElementById("turnsBox").value = turns;
     }
