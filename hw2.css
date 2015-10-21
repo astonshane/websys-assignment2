@@ -77,10 +77,10 @@ p, h1 {
     padding-top: 150px;
   }
 
-  #score {
+  #ScoreSwatch {
     clear: left;
     padding-top: 10px;
-    padding-left: 15px;
+    padding-left: 110px;
   }
 
   h1 {
