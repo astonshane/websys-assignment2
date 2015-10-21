@@ -1,3 +1,5 @@
+var timerStart = Date.now();
+
 function hexFromRGB(r, g, b) {
     var hex = [
       r.toString( 16 ),
@@ -81,7 +83,7 @@ function hexFromRGB(r, g, b) {
   var b_off = (Math.abs(exp_b - act_b)/255)*100;
   var p_off = (r_off + g_off + b_off)/3
   var difficulty = 5;
-  var msec_taken = 1;
+  var msec_taken = Date.now() - timerStart;
   // var ans = 1;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
   return ans;
