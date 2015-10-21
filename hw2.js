@@ -74,19 +74,19 @@ function hexFromRGB(r, g, b) {
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-  
+
  function scoring (act_r, act_g, act_b, exp_r, exp_g, exp_b) {
-  var r_off = (Math.abs(exp_r - act_r)/255)*100
-  var g_off = (Math.abs(exp_g - act_g)/255)*100
-  var b_off = (Math.abs(exp_b - act_b)/255)*100
+  var r_off = (Math.abs(exp_r - act_r)/255)*100;
+  var g_off = (Math.abs(exp_g - act_g)/255)*100;
+  var b_off = (Math.abs(exp_b - act_b)/255)*100;
+  alert(r_off);
   var p_off = (r_off + g_off + b_off)/3
   var difficulty = 5;
   var msec_taken = 1;
   // var ans = 1;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
-
-  $("#answer").html(ans);
-  document.getElementById('results').style.display = "block";
+  alert(ans);
+  return ans;
   }
 
 
@@ -102,9 +102,22 @@ function hexFromRGB(r, g, b) {
 
     hex = hexFromRGB( red, green, blue );
     $( "#randomSwatch" ).css( "background-color", "#" + hex );
-
   });
 
   function showResults() {
-    
+    $("#results").show();
+    var colors = $( "#randomSwatch" ).css( "background-color")
+    rgb = colors.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    //the "real" values
+    red_exp = rgb[1];
+    green_exp = rgb[2];
+    blue_exp = rgb[3];
+
+    red_act = $( "#red" ).slider( "value", $("#redBox").val() );
+    green_act = $( "#green" ).slider( "value", $("#greenBox").val() );
+    blue_act = $( "#blue" ).slider( "value", $("#blueBox").val() );
+    //alert(Integer.parseInt(string(red_act)))
+
+    ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
+    alert(ans);
   }
