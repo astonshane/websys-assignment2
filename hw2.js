@@ -82,8 +82,8 @@ function hexFromRGB(r, g, b) {
   var g_off = (Math.abs(exp_g - act_g)/255)*100;
   var b_off = (Math.abs(exp_b - act_b)/255)*100;
   var p_off = (r_off + g_off + b_off)/3;
-  var e = document.getElementById("userDiff");
-  var difficulty = e.options[e.selectedIndex].text;
+  var d = document.getElementById("userDiff");
+  var difficulty = d.options[d.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
   if (((15000 - msec_taken) < 0) || ((15 - difficulty - p_off) / (15 - difficulty)) < 0) {
@@ -124,6 +124,12 @@ function hexFromRGB(r, g, b) {
 
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     document.getElementById("yourScore").innerHTML = ans;
+    var turns = document.getElementById("turnsBox").value;
+    turns = turns-1;
+    if (turns == 0) {
+      document.getElementById("scoreButton").style.display = "none";
+    }
+    document.getElementById("turnsBox").value = turns;
     timerStart = Date.now();
     //alert(ans);
   }
@@ -144,5 +150,8 @@ function hexFromRGB(r, g, b) {
     $("#randomSwatch").load();
     document.getElementById("lastScore").innerHTML = prevAns;
     document.getElementById("yourScore").innerHTML = "";
+    document.getElementById("turnsBox").value = "10";
+    document.getElementById("scoreButton").style.display = "block";
+    document.getElementById("scoreButton").style.display = "inline";
     timerStart = Date.now();
   }
