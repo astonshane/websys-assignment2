@@ -81,11 +81,15 @@ function hexFromRGB(r, g, b) {
   var r_off = (Math.abs(exp_r - act_r)/255)*100;
   var g_off = (Math.abs(exp_g - act_g)/255)*100;
   var b_off = (Math.abs(exp_b - act_b)/255)*100;
-  var p_off = (r_off + g_off + b_off)/3
-  var difficulty = document.getElementById("userDiff").value;
+  var p_off = (r_off + g_off + b_off)/3;
+  var e = document.getElementById("userDiff");
+  var difficulty = e.options[e.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
-  // var ans = 1;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
+  if (((15000 - msec_taken) < 0) || ((15 - difficulty - p_off) / (15 - difficulty)) < 0) {
+    ans = 0;
+  }
+  ans = ans.toFixed(2);
   return ans;
   }
 
