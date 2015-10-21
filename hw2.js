@@ -118,5 +118,6 @@ function hexFromRGB(r, g, b) {
     blue_act = parseInt($("#redBox").val());
 
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
-    alert(ans);
+    document.getElementById("yourScore").innerHTML = ans;
+    //alert(ans);
   }
