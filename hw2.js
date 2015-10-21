@@ -86,7 +86,7 @@ function hexFromRGB(r, g, b) {
   var difficulty = d.options[d.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
-  if (((15000 - msec_taken) < 0) || ((15 - difficulty - p_off) / (15 - difficulty)) < 0) {
+  if (ans < 0 || msec_taken > 15000 || ((15 - difficulty - p_off) / (15 - difficulty)) < 0) {
     ans = 0;
   }
   ans = ans.toFixed(2);
@@ -125,11 +125,16 @@ function hexFromRGB(r, g, b) {
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     document.getElementById("yourScore").innerHTML = ans;
     var turns = document.getElementById("turnsBox").value;
-    turns = turns-1;
-    if (turns == 0) {
-      document.getElementById("scoreButton").style.display = "none";
+    if (turns < 0) {
+      alert("You must have a positive number of turns.")
     }
-    document.getElementById("turnsBox").value = turns;
+    else {
+      turns = turns-1;
+      if (turns == 0) {
+        document.getElementById("scoreButton").style.display = "none";
+      }
+      document.getElementById("turnsBox").value = turns;
+    }
     timerStart = Date.now();
     //alert(ans);
   }
