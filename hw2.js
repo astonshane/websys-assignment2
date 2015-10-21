@@ -82,7 +82,7 @@ function hexFromRGB(r, g, b) {
   var g_off = (Math.abs(exp_g - act_g)/255)*100;
   var b_off = (Math.abs(exp_b - act_b)/255)*100;
   var p_off = (r_off + g_off + b_off)/3
-  var difficulty = 5;
+  var difficulty = document.getElementById("userDiff").value;
   var msec_taken = Date.now() - timerStart;
   // var ans = 1;
   var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
