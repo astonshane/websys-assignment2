@@ -1,5 +1,5 @@
 var timerStart = Date.now();
-var bestAns = 0;
+var ans = 0;
 
 function hexFromRGB(r, g, b) {
     var hex = [
@@ -86,7 +86,7 @@ function hexFromRGB(r, g, b) {
   var d = document.getElementById("userDiff");
   var difficulty = d.options[d.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
-  var ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
+  ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
   if (ans < 0) {
     ans = 0;
   }
@@ -131,7 +131,7 @@ function hexFromRGB(r, g, b) {
     var green_act = parseInt($("#greenBox").val());
     var blue_act = parseInt($("#redBox").val());
 
-    var ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
+    ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     document.getElementById("yourScore").innerHTML = ans;
 
     var turns = document.getElementById("turnsBox").value;
@@ -142,7 +142,7 @@ function hexFromRGB(r, g, b) {
       turns = turns-1;
       if (turns == 0) {
         document.getElementById("scoreButton").style.display = "none";
-        document.getElementById("scoreTitle").innerHTML = "Final Score"
+        document.getElementById("scoreTitle").innerHTML = "Final Score";
       }
       document.getElementById("turnsBox").value = turns;
     }
@@ -151,11 +151,14 @@ function hexFromRGB(r, g, b) {
   }
 
   function newSwatch() {
-    var prevAns = ans;
-    $("#randomSwatch").load();
+    //alert("aakf");
+    //var prevAns = ans;
+    //$("#randomSwatch").load();
     var red = getRandomInt(0,256);
     var green = getRandomInt(0,256);
     var blue = getRandomInt(0,256);
+
+    var prevAns = ans;
 
     console.log(red);
     console.log(green);
@@ -164,6 +167,8 @@ function hexFromRGB(r, g, b) {
     hex = hexFromRGB( red, green, blue );
     $( "#randomSwatch" ).css( "background-color", "#" + hex );
     $("#randomSwatch").load();
+
+    
     document.getElementById("lastScore").innerHTML = prevAns;
     document.getElementById("yourScore").innerHTML = "";
     document.getElementById("turnsBox").value = "10";
@@ -171,3 +176,5 @@ function hexFromRGB(r, g, b) {
     document.getElementById("scoreButton").style.display = "inline";
     timerStart = Date.now();
   }
+
+  function reset() {}
