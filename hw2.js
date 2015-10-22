@@ -1,5 +1,7 @@
 var timerStart = Date.now();
 var ans = 0;
+var tmp = ans;
+tmp = tmp.toFixed(2);
 
 function hexFromRGB(r, g, b) {
     var hex = [
@@ -70,7 +72,7 @@ function hexFromRGB(r, g, b) {
 
     $( "#redBox" ).val($( "#red" ).slider( "value" ));
     $( "#greenBox" ).val($( "#green" ).slider( "value" ));
-    $( "#blueBox" ).val($( "#green" ).slider( "value" ));
+    $( "#blueBox" ).val($( "#blue" ).slider( "value" ));
 
   });
 
@@ -93,13 +95,8 @@ function hexFromRGB(r, g, b) {
   else if (ans > 15000) {
     ans = 0;
   }
+
   ans = ans.toFixed(2);
-  // bestAns = bestAns.toFixed(2);
-  // if (ans > bestAns) {
-  //   bestAns = ans;
-  // }
-  //document.getElementById("bestScore").innerHTML = bestAns;
-  //alert(msec_taken);
   return ans;
   }
 
@@ -131,7 +128,14 @@ function hexFromRGB(r, g, b) {
     var green_act = parseInt($("#greenBox").val());
     var blue_act = parseInt($("#redBox").val());
 
+    var lastAns = document.getElementById("yourScore").innerHTML;
+
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
+    if (lastAns < ans) {
+      alert("boop");
+      var bestAns = ans;
+      document.getElementById("bestScore").innerHTML = bestAns;
+    }
     document.getElementById("yourScore").innerHTML = ans;
 
     var turns = document.getElementById("turnsBox").value;
