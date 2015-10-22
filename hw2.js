@@ -136,6 +136,7 @@ function hexFromRGB(r, g, b) {
       document.getElementById("bestScore").innerHTML = bestAns;
     }
     document.getElementById("yourScore").innerHTML = ans;
+    document.getElementById("lastScore").innerHTML = ans + "  " + document.getElementById("lastScore").innerHTML;
 
     var turns = document.getElementById("turnsBox").value;
     if (turns < 0) {
@@ -161,7 +162,7 @@ function hexFromRGB(r, g, b) {
     var green = getRandomInt(0,256);
     var blue = getRandomInt(0,256);
 
-    var prevAns = ans;
+    //var prevAns = ans;
 
     console.log(red);
     console.log(green);
@@ -172,7 +173,7 @@ function hexFromRGB(r, g, b) {
     $("#randomSwatch").load();
 
     
-    document.getElementById("lastScore").innerHTML = prevAns;
+    document.getElementById("lastScore").innerHTML = "";
     document.getElementById("yourScore").innerHTML = "";
     document.getElementById("turnsBox").value = "10";
     document.getElementById("scoreButton").style.display = "block";
