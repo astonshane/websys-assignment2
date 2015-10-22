@@ -86,6 +86,7 @@ function hexFromRGB(r, g, b) {
   var d = document.getElementById("userDiff");
   var difficulty = d.options[d.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
+  alert(p_off);
   ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
   if (ans < 0) {
     ans = 0;
@@ -124,7 +125,7 @@ function hexFromRGB(r, g, b) {
 
     var red_act = parseInt($("#redBox").val());
     var green_act = parseInt($("#greenBox").val());
-    var blue_act = parseInt($("#redBox").val());
+    var blue_act = parseInt($("#blueBox").val());
 
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     document.getElementById("yourScore").innerHTML = ans;
@@ -138,7 +139,7 @@ function hexFromRGB(r, g, b) {
       turns = turns-1;
       if (turns == 0) {
         document.getElementById("scoreButton").style.display = "none";
-        document.getElementById("scoreTitle").innerHTML = "Final Score";
+        document.getElementById("scoreTitle").innerHTML = "Final Score:";
       }
       document.getElementById("turnsBox").value = turns;
     }
@@ -170,6 +171,9 @@ function hexFromRGB(r, g, b) {
     document.getElementById("turnsBox").value = "10";
     document.getElementById("scoreButton").style.display = "block";
     document.getElementById("scoreButton").style.display = "inline";
+    if (document.getElementById("scoreTitle").innerHTML == "Final Score:") {
+      document.getElementById("scoreTitle").innerHTML = "Your Score:";
+    }
     timerStart = Date.now();
   }
 
