@@ -132,7 +132,6 @@ function hexFromRGB(r, g, b) {
 
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
     if (lastAns < ans) {
-      alert("boop");
       var bestAns = ans;
       document.getElementById("bestScore").innerHTML = bestAns;
     }
