@@ -1,7 +1,5 @@
 var timerStart = Date.now();
 var ans = 0;
-var tmp = ans;
-tmp = tmp.toFixed(2);
 
 function hexFromRGB(r, g, b) {
     var hex = [
@@ -128,15 +126,9 @@ function hexFromRGB(r, g, b) {
     var green_act = parseInt($("#greenBox").val());
     var blue_act = parseInt($("#redBox").val());
 
-    var lastAns = document.getElementById("yourScore").innerHTML;
-
     ans = scoring(red_act, green_act, blue_act, red_exp, green_exp, blue_exp);
-    if (lastAns < ans) {
-      var bestAns = ans;
-      document.getElementById("bestScore").innerHTML = bestAns;
-    }
     document.getElementById("yourScore").innerHTML = ans;
-    document.getElementById("lastScore").innerHTML = ans + "  " + document.getElementById("lastScore").innerHTML;
+    document.getElementById("lastScore").innerHTML = ans + "&nbsp;&nbsp;&nbsp;&nbsp;" + document.getElementById("lastScore").innerHTML;
 
     var turns = document.getElementById("turnsBox").value;
     if (turns < 0) {
