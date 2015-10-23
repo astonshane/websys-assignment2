@@ -14,15 +14,7 @@ function hexFromRGB(r, g, b) {
     });
     return hex.join( "" ).toUpperCase();
   }
-  //http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
-  function hexToRgb(hex) {
-    var bigint = parseInt(hex, 16);
-    var r = (bigint >> 16) & 255;
-    var g = (bigint >> 8) & 255;
-    var b = bigint & 255;
-
-    return [r,g,b];
-}
+  
 
   function refreshSwatch() {
     var red = $( "#red" ).slider( "value" ),
@@ -178,25 +170,19 @@ function hexFromRGB(r, g, b) {
 
   function reset() {}
 
+//the actual plugin:
   (function ( $ ) {
-
       $.fn.hexed = function( options ) {
-
-          // This is the easiest way to have default options.
           var settings = $.extend({
               // These are the defaults.
               difficulty: 5,
               rounds: 10
           }, options );
 
-          // Greenify the collection based on the settings variable.
-          /*return this.css({
-              color: settings.color,
-              backgroundColor: settings.backgroundColor
-          });*/
           this.append("<h1>Get Hexed!</h1><p> Your goal is to guess the RGB values of the swatch on the left using the sliders and the swatch on the right.</p><p>Use the sliders or the input boxes to adjust the RGB values of the swatch on the right.</p><p>Press the 'Got It!' button when you think you have the correct answer.</p><p>If you would like a new swatch, press the 'New Swatch!' button.</p><p>Once you run out of turns, you must select a new swatch.</p>");
           this.append("<div id='difficulty'></div>");
           $("#difficulty").append("<label>Difficulty: <select id = 'userDiff'></select></label>");
+          //add an options for 1-10, making the default selected one the "Difficulty" setting
           for(var i=0; i<10; i++){
             var s = "<option value='";
             if (i == settings.difficulty){
@@ -207,6 +193,7 @@ function hexFromRGB(r, g, b) {
             $("#userDiff").append(s);
           }
           this.append("<div id='turns'></div>");
+          //set the turns box to start as the "Turns" setting
           $("#turns").append("  <label>Turns: <input id='turnsBox' value='" + String(settings.rounds) + "'>")
           this.append("<p class = 'label'>Random Swatch &nbsp; &nbsp; &nbsp; New Swatch</p>")
 
@@ -218,8 +205,3 @@ function hexFromRGB(r, g, b) {
       };
 
   }( jQuery ));
-
-  $( "#here" ).hexed({
-    difficulty: 5,
-    rounds: 10
-});
