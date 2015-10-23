@@ -164,7 +164,7 @@ function hexFromRGB(r, g, b) {
     $( "#randomSwatch" ).css( "background-color", "#" + hex );
     $("#randomSwatch").load();
 
-    
+
     document.getElementById("lastScore").innerHTML = "";
     document.getElementById("yourScore").innerHTML = "";
     document.getElementById("turnsBox").value = "10";
@@ -177,3 +177,49 @@ function hexFromRGB(r, g, b) {
   }
 
   function reset() {}
+
+  (function ( $ ) {
+
+      $.fn.hexed = function( options ) {
+
+          // This is the easiest way to have default options.
+          var settings = $.extend({
+              // These are the defaults.
+              difficulty: 5,
+              rounds: 10
+          }, options );
+
+          // Greenify the collection based on the settings variable.
+          /*return this.css({
+              color: settings.color,
+              backgroundColor: settings.backgroundColor
+          });*/
+          this.append("<h1>Get Hexed!</h1><p> Your goal is to guess the RGB values of the swatch on the left using the sliders and the swatch on the right.</p><p>Use the sliders or the input boxes to adjust the RGB values of the swatch on the right.</p><p>Press the 'Got It!' button when you think you have the correct answer.</p><p>If you would like a new swatch, press the 'New Swatch!' button.</p><p>Once you run out of turns, you must select a new swatch.</p>");
+          this.append("<div id='difficulty'></div>");
+          $("#difficulty").append("<label>Difficulty: <select id = 'userDiff'></select></label>");
+          for(var i=0; i<10; i++){
+            var s = "<option value='";
+            if (i == settings.difficulty){
+              s = s + String(i) + "' selected='" + String(i) + "'>"+String(i)+"</option>"
+            }else{
+              s = s + String(i) + "'>"+String(i)+"</option>"
+            }
+            $("#userDiff").append(s);
+          }
+          this.append("<div id='turns'></div>");
+          $("#turns").append("  <label>Turns: <input id='turnsBox' value='" + String(settings.rounds) + "'>")
+          this.append("<p class = 'label'>Random Swatch &nbsp; &nbsp; &nbsp; New Swatch</p>")
+
+          this.append("<div id='randomSwatch' class='ui-widget-content ui-corner-al'></div><div id='swatch' class='ui-widget-content ui-corner-all'></div>")
+          this.append("<div id='colors'><div id='red'> </div><input id='redBox' class='inbox'></input><div id='green'></div><input id='greenBox' class='inbox'></input><div id='blue'></div><input id='blueBox' class='inbox'></input></div>")
+          this.append("<div id='ScoreSwatch'><input type='button' id='scoreButton' value='Got It!' onclick='showResults()' /><input type='button' id='newSwatch' value='New Swatch' onclick='newSwatch()' /></div>")
+          this.append("<div id='results' style='display:none;'><h1 id='scoreTitle'>Your Score:</h1><p id='yourScore'></p><h1>Score on Last Color:</h1><p id='lastScore'></p></div>")
+          return this;
+      };
+
+  }( jQuery ));
+
+  $( "#here" ).hexed({
+    difficulty: 5,
+    rounds: 10
+});
