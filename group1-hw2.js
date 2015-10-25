@@ -82,7 +82,7 @@ function hexFromRGB(r, g, b) {
   if (ans < 0) {
     ans = 0;
   }
-  else if (ans > 15000) {
+  else if (ans > 60000) {
     ans = 0;
   }
 
