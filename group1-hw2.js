@@ -135,18 +135,12 @@ function hexFromRGB(r, g, b) {
       document.getElementById("turnsBox").value = turns;
     }
     timerStart = Date.now();
-    //alert(ans);
   }
 
   function newSwatch() {
-    //alert("aakf");
-    //var prevAns = ans;
-    //$("#randomSwatch").load();
     var red = getRandomInt(0,256);
     var green = getRandomInt(0,256);
     var blue = getRandomInt(0,256);
-
-    //var prevAns = ans;
 
     console.log(red);
     console.log(green);
