@@ -78,7 +78,7 @@ function hexFromRGB(r, g, b) {
   var d = document.getElementById("userDiff");
   var difficulty = d.options[d.selectedIndex].text;
   var msec_taken = Date.now() - timerStart;
-  ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (15000 - msec_taken);
+  ans = ((15 - difficulty - p_off) / (15 - difficulty)) * (60000 - msec_taken);
   if (ans < 0) {
     ans = 0;
   }
